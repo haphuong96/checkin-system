@@ -11,6 +11,13 @@ datasource db {
   provider = "postgresql"
 }
 
+model CheckInPoint {
+  day         String @id
+  pointsAdded Int    @map("points_added")
+
+  @@map("check_in_points")
+}
+
 model User {
   id           Int            @id @default(autoincrement())
   name         String?

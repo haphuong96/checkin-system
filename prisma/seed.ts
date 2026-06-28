@@ -18,9 +18,22 @@ const USERS = [
   'Julia Kim',
 ];
 
+const CHECK_IN_POINTS = [
+  { day: 'DAY-1', pointsAdded: 1 },
+  { day: 'DAY-2', pointsAdded: 2 },
+  { day: 'DAY-3', pointsAdded: 3 },
+  { day: 'DAY-4', pointsAdded: 5 },
+  { day: 'DAY-5', pointsAdded: 8 },
+  { day: 'DAY-6', pointsAdded: 13 },
+  { day: 'DAY-7', pointsAdded: 21 },
+];
+
 async function main() {
+  console.log('Seeding check-in points...');
+  await prisma.checkInPoint.createMany({ data: CHECK_IN_POINTS });
+  console.log(`  ✓ ${CHECK_IN_POINTS.length} check-in points`);
+
   console.log('Seeding users...');
-  await prisma.user.deleteMany();
   await prisma.user.createMany({ data: USERS.map((name) => ({ name })) });
   console.log(`  ✓ ${USERS.length} users`);
 }
