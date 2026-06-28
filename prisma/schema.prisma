@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           Int            @id @default(autoincrement())
+  name         String?
+  totalPoints  Int            @default(0) @map("total_points")
+  checkIns     CheckInHistory[]
+
+  @@map("users")
+}
+
+model CheckInHistory {
+  id     Int      @id @default(autoincrement())
+  userId Int      @map("user_id")
+  date   DateTime @db.Date
+  score  Int
+  user   User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, date])
+  @@map("check_in_histories")
+}
