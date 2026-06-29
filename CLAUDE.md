@@ -14,7 +14,10 @@ checkin-system/
 ├── generated/prisma/           # Auto-generated Prisma client (do not edit)
 └── src/
     ├── prisma/                 # Global PrismaModule + PrismaService + shared Prisma types
-    └── ...                     # Feature modules go here
+    ├── redis/                  # Global RedisModule — exports REDIS_CLIENT (ioredis) + REDLOCK (Redlock)
+    ├── users/                  # POST /users, GET /users/:id
+    ├── check-in/               # POST /check-in, GET /check-in/statuses — Redis lock + marker
+    └── check-in-histories/     # GET /check-in-histories — paginated history, Postgres only
 ```
 
 ## Commands

@@ -1,12 +1,13 @@
-export type DayStatus = {
-  day: string;
-  pointsAdded: number;
-  checkedIn: boolean;
+export type CheckInHistoryItem = {
+  id: number;
+  date: string;
+  score: number;
 };
 
-export type CheckInResult = {
-  date: string;
-  dayNumber: number;
-  pointsEarned: number;
-  totalPoints: number;
+export type Paginated<T> = {
+  data: T[];
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
 };

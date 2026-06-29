@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { PrismaModule } from './prisma/prisma.module';
 import { RedisModule } from './redis/redis.module';
 import { UsersModule } from './users/users.module';
+import { CheckInModule } from './check-in/check-in.module';
 import { CheckInHistoriesModule } from './check-in-histories/check-in-histories.module';
 
 @Module({
@@ -13,6 +14,7 @@ import { CheckInHistoriesModule } from './check-in-histories/check-in-histories.
     PrismaModule,
     RedisModule,
     UsersModule,
+    CheckInModule,
     CheckInHistoriesModule,
   ],
   controllers: [AppController],

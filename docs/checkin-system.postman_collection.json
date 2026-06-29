@@ -1,0 +1,81 @@
+{
+  "info": {
+    "name": "Checkin System",
+    "_postman_id": "checkin-system-collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3001"
+    }
+  ],
+  "item": [
+    {
+      "name": "Check-in",
+      "item": [
+        {
+          "name": "POST Check In",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/check-in",
+              "host": ["{{baseUrl}}"],
+              "path": ["check-in"]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "GET Check-in Statuses",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/check-in/statuses?userId=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["check-in", "statuses"],
+              "query": [
+                { "key": "userId", "value": "1" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Check-in Histories",
+      "item": [
+        {
+          "name": "GET Check-in Histories (paginated)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/check-in-histories?userId=1&page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["check-in-histories"],
+              "query": [
+                { "key": "userId", "value": "1" },
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "10" }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
